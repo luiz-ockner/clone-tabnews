@@ -6,11 +6,6 @@ async function fetchAPI(key){
   return responseBody;
 }
 
-function CapsLock(props){
-  const texto = props.texto.toUpperCase();
-  return texto;
-}
-
 export default function StatusPage(){
    return (
     <>
