@@ -1,8 +1,6 @@
- export class InternalServerError extends Error{
-  constructor({cause})
-  {
-    super("Um erro interno não esperado aconteceu.",
-    {
+export class InternalServerError extends Error {
+  constructor({ cause }) {
+    super("Um erro interno não esperado aconteceu.", {
       cause,
     });
 
@@ -11,8 +9,7 @@
     this.statusCode = 500;
   }
 
-  toJSON()
-  {
+  toJSON() {
     return {
       name: this.name,
       message: this.message,
@@ -20,4 +17,4 @@
       statusCode: this.statusCode,
     };
   }
- }
+}

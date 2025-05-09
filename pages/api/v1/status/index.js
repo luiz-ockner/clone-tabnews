@@ -2,9 +2,7 @@ import database from "infra/database.js";
 import { InternalServerError } from "infra/errors";
 
 async function status(request, response) {
-
-  try
-  {  
+  try {
     const database_values = await database.query("SHOW server_version;");
     const dbVersion = database_values.rows[0].server_version;
     const dbMaxConn = await database.query("SHOW max_connections;");
@@ -25,8 +23,7 @@ async function status(request, response) {
       updated_at: updateAt,
       activity: dbActivity.rows[0].count,
     });
-  }catch(error)
-  {
+  } catch (error) {
     const publicErrorObject = new InternalServerError({
       cause: error,
     });
@@ -35,7 +32,7 @@ async function status(request, response) {
     console.error(publicErrorObject);
 
     response.status(500).json(publicErrorObject);
-  }  
+  }
 }
 
 export default status;
